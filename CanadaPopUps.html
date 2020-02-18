@@ -1,150 +1,21 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta name="description" content="Canada map with pop-ups">
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Canada Map</title>
-  <style>
-    html,
-    body,
-    #viewDiv {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-    }
-  </style>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
-  <script src="https://js.arcgis.com/4.13/"></script>
+<link rel="stylesheet" type="text/css" href="NewStyle.css">
+<!--Adds title to tab bar in search engine-->
+<title>About Emily Kingdon</title>
+<!--Character coding-->
+<meta charset="utf-8">
+<meta name="description" content="Brief auotbiography of Emily Kingdon">
+<meta name="keywords" content="HTML,CSS, Fleming College, Emily, Adventure">
+<meta name="author" content="Emily Kingdon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
-<script>
-  require([
-      "esri/Map",
-      "esri/views/MapView",
-      "esri/layers/FeatureLayer"
-    ],
-    function(
-      Map, 
-      MapView,
-      FeatureLayer
-    ) {
-
-      var map = new Map({
-        basemap: "topo-vector"
-      });
-
-      var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center: [-118.80543,34.02700],
-        zoom: 13
-      });
-      
-      var Provinces = new FeatureLayer({
-        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/EkingdonCanadaPro/MapServer/0"
-        
-        
-      // Define a popup for Trailheads
-      var popupProvince = {
-        "title": "Province",
-        "content": "<b>Name:</b> {TRL_NAME}<br><b>City:</b> {CITY_JUR}<br><b>Cross Street:</b> {X_STREET}<br><b>Parking:</b> {PARKING}<br><b>Elevation:</b> {ELEV_FT} ft"
-      }
-      
-      // Create the layer and set the popup
-      var trailheads = new FeatureLayer({
-        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/EkingdonCanadaPro/MapServer/0",
-        outFields: ["TRL_NAME","CITY_JUR","X_STREET","PARKING","ELEV_FT"],
-        popupTemplate: popupTrailheads
-      });
-          
-      // Add the layer
-      map.add(trailheads);
-    
-    
-      // Define a popup for Trails
-      var popupTrails = {
-        title: "Trail Information",
-        content: function(){
-           return "This is {TRL_NAME} with {ELEV_GAIN} ft of climbing."; 
-        }
-      }
-          
-      // Create the layer and set the renderer
-      var trails = new FeatureLayer({
-        url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails_Styled/FeatureServer/0",
-        outFields: ["TRL_NAME","ELEV_GAIN"],
-        popupTemplate: popupTrails
-      });
-    
-      // Add the layer
-      map.add(trails,0);
-    
-      // Define popup for Parks and Open Spaces
-      var popupOpenspaces = {
-        "title": "{PARK_NAME}",
-        "content": [{
-          "type": "fields",
-          "fieldInfos": [
-            {
-              "fieldName": "AGNCY_NAME",
-              "label": "Agency",
-              "isEditable": true,
-              "tooltip": "",
-              "visible": true,
-              "format": null,
-              "stringFieldOption": "text-box"
-            },
-            {
-              "fieldName": "TYPE",
-              "label": "Type",
-              "isEditable": true,
-              "tooltip": "",
-              "visible": true,
-              "format": null,
-              "stringFieldOption": "text-box"
-            },
-            {
-              "fieldName": "ACCESS_TYP",
-              "label": "Access",
-              "isEditable": true,
-              "tooltip": "",
-              "visible": true,
-              "format": null,
-              "stringFieldOption": "text-box"
-            },
-            {
-              "fieldName": "GIS_ACRES",
-              "label": "Acres",
-              "isEditable": true,
-              "tooltip": "",
-              "visible": true,
-              "format": {
-                "places": 2,
-                "digitSeparator": true
-              },
-              "stringFieldOption": "text-box"
-            }
-          ]
-        }]
-      }
-    
-      var openspaces = new FeatureLayer({
-        url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space_Styled/FeatureServer/0",
-        outFields: ["TYPE","PARK_NAME", "AGNCY_NAME","ACCESS_TYP","GIS_ACRES","TRLS_MI","TOTAL_GOOD","TOTAL_FAIR", "TOTAL_POOR"],
-        popupTemplate: popupOpenspaces
-      });
-    
-      // Add the layer
-      map.add(openspaces,0);
-     
-    });
-
-  </script>
-</head>
-
 <body>
-  <div id="viewDiv"></div>
-</body>
+<!-- referenced how to do a webpage from w3schools https://www.w3schools.com/css/css_navbar.asp/-->
+<div class="NavBar">
+	<a class="active" href="newindex.htm">About Emily</a>
+	<a href= "NewExperience.htm">Experience</a>
+	<a href= "NewContact.htm">Contact</a>
 
-</html>
+</div>
